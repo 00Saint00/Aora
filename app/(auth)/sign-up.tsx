@@ -6,13 +6,15 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import CustomButton from "../../components/custom-button";
 import images from "../../constants/images";
 
-const SignIn = () => {
+const SignUp = () => {
   type FormState = {
+    username: string;
     email: string;
     password: string;
   };
 
   const [form, setForm] = useState<FormState>({
+    username: "",
     email: "",
     password: "",
   });
@@ -31,8 +33,16 @@ const SignIn = () => {
             className="w-[130px] h-[35px]"
           />
           <Text className="text-white text-2xl text-semibold font-psemibold mt-10">
-            Login to Aura
+            Signup to Aura
           </Text>
+
+          <FormField
+            title="Username"
+            value={form.username}
+            handleChangeText={(e) => setForm({ ...form, username: e })}
+            otherStyles="mt-7"
+            keyboardType="email-address"
+          />
 
           <FormField
             title="Email"
@@ -56,14 +66,14 @@ const SignIn = () => {
 
           <View className="justify-center pt-5 flex-row gap-2">
             <Text className="text-lg text-gray-100 font-pregular">
-              Dont have an account?
+              Have an account?
             </Text>
 
             <Link
-              href="/sign-up"
+              href="/sign-in"
               className="text-lg font-psemibold text-secondary"
             >
-              Sign Up
+              Sign Ip
             </Link>
           </View>
         </View>
@@ -72,4 +82,4 @@ const SignIn = () => {
   );
 };
 
-export default SignIn;
+export default SignUp;
