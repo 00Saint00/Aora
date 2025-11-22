@@ -1,18 +1,22 @@
-import { Platform, StyleSheet, View } from "react-native";
-
 import { ThemedText } from "@/components/themed-text";
 import { ThemedView } from "@/components/themed-view";
 import { Link } from "expo-router";
+import { Platform, StyleSheet, Text, View } from "react-native";
 
 export default function HomeScreen() {
   return (
-    <View>
+    <View className="flex-1 bg-white p-4 pt-16">
+      {/* Title */}
       <ThemedView style={styles.titleContainer}>
         <ThemedText type="title">Welcome!</ThemedText>
       </ThemedView>
+
+      {/* Step 1 */}
       <ThemedView style={styles.stepContainer}>
-        <View className="text-2xl font-bold text-red-300">
-          <ThemedText>Step 1: Try it</ThemedText>
+        <View>
+          <Text className="text-2xl font-pblack font-bold mb-2">
+            Step 1: Try it
+          </Text>
         </View>
         <ThemedText>
           Edit{" "}
@@ -28,10 +32,14 @@ export default function HomeScreen() {
           to open developer tools.
         </ThemedText>
       </ThemedView>
+
+      {/* Step 2 */}
       <ThemedView style={styles.stepContainer}>
         <Link href="/modal">
           <Link.Trigger>
-            <ThemedText type="subtitle">Step 2: Explore</ThemedText>
+            <ThemedText type="subtitle" className="text-blue-600 mb-2">
+              Step 2: Explore
+            </ThemedText>
           </Link.Trigger>
           <Link.Preview />
           <Link.Menu>
@@ -55,18 +63,20 @@ export default function HomeScreen() {
             </Link.Menu>
           </Link.Menu>
         </Link>
-
-        <ThemedText>
-          {`Tap the Explore tab to learn more about what's included in this starter app.`}
+        <ThemedText className="mt-1">
+          Tap the Explore tab to learn more about what's included in this
+          starter app.
         </ThemedText>
       </ThemedView>
+
+      {/* Step 3 */}
       <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 3: Get a fresh start</ThemedText>
+        <ThemedText type="subtitle" className="text-green-600 mb-2">
+          Step 3: Get a fresh start
+        </ThemedText>
         <ThemedText>
-          {`When you're ready, run `}
-          <ThemedText type="defaultSemiBold">
-            npm run reset-project
-          </ThemedText>{" "}
+          When you're ready, run{" "}
+          <ThemedText type="defaultSemiBold">npm run reset-project</ThemedText>{" "}
           to get a fresh <ThemedText type="defaultSemiBold">app</ThemedText>{" "}
           directory. This will move the current{" "}
           <ThemedText type="defaultSemiBold">app</ThemedText> to{" "}
@@ -81,17 +91,10 @@ const styles = StyleSheet.create({
   titleContainer: {
     flexDirection: "row",
     alignItems: "center",
-    gap: 8,
+    marginBottom: 24, // more spacing below title
   },
   stepContainer: {
-    gap: 8,
-    marginBottom: 8,
-  },
-  reactLogo: {
-    height: 178,
-    width: 290,
-    bottom: 0,
-    left: 0,
-    position: "absolute",
+    marginBottom: 24, // more spacing between steps
+    paddingHorizontal: 2,
   },
 });
